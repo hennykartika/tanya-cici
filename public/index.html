@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Tanya Cici</title>
+  <meta name="description" content="Teman ngobrol AI untuk pertanyaan receh seputar keseharian perempuan: lucu, relate, dan tetap memberi solusi." />
+  <meta name="theme-color" content="#ffd6e7" />
+  <meta name="referrer" content="no-referrer" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%8E%80</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body data-vibe="heboh">
+  <div class="bg-deco" id="bgDeco" aria-hidden="true"></div>
+
+  <main class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="avatar" id="headerAvatar" aria-hidden="true">🎀</div>
+        <div>
+          <h1>Cici <span class="tag">bestie AI</span></h1>
+          <p class="status"><span class="dot" aria-hidden="true"></span><span id="statusText">online · siap bahas logika ciwi</span></p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <span class="guest-badge" id="guestBadge" hidden>📚 mode belajar</span>
+        <button class="icon-btn" id="resetBtn" type="button" aria-label="Mulai obrolan baru" title="Mulai obrolan baru">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="vibes" role="radiogroup" aria-label="Pilih gaya jawaban Cici">
+      <span class="vibes-label" aria-hidden="true">vibe:</span>
+      <button type="button" role="radio" data-vibe="heboh" aria-checked="true">💥 Heboh</button>
+      <button type="button" role="radio" data-vibe="kalem" aria-checked="false">🌸 Kalem</button>
+      <button type="button" role="radio" data-vibe="savage" aria-checked="false">💅 Savage</button>
+    </div>
+
+    <section class="chat" id="chat" aria-live="polite" aria-label="Riwayat obrolan">
+      <div class="welcome" id="welcome">
+        <div class="welcome-emoji" aria-hidden="true">💖</div>
+        <h2>Hai, bestie!</h2>
+        <p>Aku <b>Cici</b>. Tanya apa aja yang receh-receh soal dunia per-ciwi-an: dari lemari penuh tapi “nggak punya baju” sampai logika duit yang cuma cewek yang paham. Aku jawab jujur, lucu, plus kasih solusi. Deal?</p>
+        <div class="chips" id="chips"></div>
+        <button class="shuffle" id="shuffleBtn" type="button">🎲 acak pertanyaan lain</button>
+      </div>
+      <div class="messages" id="messages"></div>
+    </section>
+
+    <form class="composer" id="composer" autocomplete="off">
+      <label class="sr-only" for="input">Tulis pertanyaan</label>
+      <textarea id="input" rows="1" maxlength="1000" placeholder="Curhat receh di sini…"></textarea>
+      <button type="submit" id="sendBtn" class="send-btn" aria-label="Kirim pesan">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3.4 11.3l16.9-7.2c.8-.3 1.6.5 1.2 1.3l-7.2 16.9c-.4.9-1.7.8-1.9-.1l-1.5-6.1-6.1-1.5c-.9-.3-1-1.6-.1-1.9z"/></svg>
+      </button>
+    </form>
+    <p class="footnote">Cici itu AI, bisa salah dan suka lebay. Jangan kirim data pribadi, dan untuk hal serius tetap tanya ahlinya.</p>
+  </main>
+
+  <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateTitle" hidden>
+    <div class="gate-card" id="gateCard">
+      <div class="gate-step" data-step="ask">
+        <div class="gate-emoji" aria-hidden="true">🎀</div>
+        <h2 id="gateTitle">Eits, bentar!</h2>
+        <p>Ini zona khusus <b>ciwi-ciwi</b>. Isinya gibahin logika cewek, lemari, diskonan, dan overthinking jam 2 pagi.</p>
+        <p class="gate-q">Kamu cewek, kan?</p>
+        <div class="gate-actions">
+          <button type="button" class="btn primary" data-gate="girl">Iya dong 💅</button>
+          <button type="button" class="btn ghost" data-gate="notgirl">Ehm… bukan 🙈</button>
+        </div>
+      </div>
+      <div class="gate-step" data-step="guest" hidden>
+        <div class="gate-emoji" aria-hidden="true">🤨</div>
+        <h2>Hmm… oke deh.</h2>
+        <p>Kamu boleh masuk, <b>TAPI</b> dengan status resmi:<br><span class="stamp">Cowok yang lagi belajar ngertiin cewek</span></p>
+        <p class="small">Cici bakal kasih catatan khusus buat cowok di tiap jawaban. Jangan ember ke grup tongkrongan ya.</p>
+        <div class="gate-actions">
+          <button type="button" class="btn primary" data-gate="guest">Siap, aku belajar 🙏</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>

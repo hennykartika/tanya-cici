@@ -1,0 +1,25 @@
+{
+  "name": "tanya-cici",
+  "version": "1.0.0",
+  "description": "Small-talk chatbot for everyday Indonesian questions, backed by the Gemini API. No runtime dependencies, no build step.",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.11"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test",
+    "test:watch": "node --test --watch",
+    "lint": "eslint .",
+    "scan:secrets": "node scripts/scan-secrets.js",
+    "verify": "npm run lint && npm test && npm run scan:secrets"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.12.0",
+    "eslint": "^9.12.0",
+    "globals": "^15.11.0"
+  }
+}

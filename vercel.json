@@ -1,0 +1,24 @@
+{
+  "outputDirectory": "public",
+  "functions": {
+    "api/chat.js": {
+      "includeFiles": "prompts/**"
+    }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "content-security-policy",
+          "value": "default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
+        },
+        { "key": "x-content-type-options", "value": "nosniff" },
+        { "key": "referrer-policy", "value": "no-referrer" },
+        { "key": "x-frame-options", "value": "DENY" },
+        { "key": "permissions-policy", "value": "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
+        { "key": "strict-transport-security", "value": "max-age=31536000; includeSubDomains" }
+      ]
+    }
+  ]
+}
